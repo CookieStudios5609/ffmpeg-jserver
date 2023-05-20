@@ -20,12 +20,14 @@ public class VideoCompressorService {
     * A constructor that handles passing the correct flags and parameters to ffmpeg
     @param filename The absolute path to the file, including the file and its extension
     */
-    public VideoCompressorService(String filename) throws IOException {
+    public VideoCompressorService(String filename, int outsize, String codec) throws IOException {
         this.ffm = new FFmpeg("ffmpeg");
         this.ffb = new FFmpegBuilder()
         .setInput(filename)
         .addOutput(parseFilePath(filename) + "_final.mp4")
         .setAudioSampleRate(44100)
+        //.setTargetSize(outsize)
+        .setVideoCodec(codec)
         .done();
     }
 

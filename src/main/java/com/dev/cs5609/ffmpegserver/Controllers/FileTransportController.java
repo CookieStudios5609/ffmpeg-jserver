@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class FileTransportController {
 
     @PostMapping("/upload")
-    public void upload(@RequestParam("file") MultipartFile video, RedirectAttributes attributes) {
+    public void upload(@RequestParam("file") MultipartFile video, RedirectAttributes attributes, @RequestParam(defaultValue = "200000") int outputkb, @RequestParam(defaultValue = "libx264") String codec) {
         System.out.printf("Received file: %s, containing %s bytes of %s\n", video.getOriginalFilename(), video.getSize(), video.getContentType());
         File vidFile = new File("videos/" + video.getOriginalFilename());
         vidFile.getParentFile().mkdirs();
@@ -28,7 +28,7 @@ public class FileTransportController {
             System.out.println("file created");
             //TODO: Figure out why Spring attempts to write to a Tomcat folder in the user's temp folder, and fix to use relative paths
             video.transferTo(new File(vidFile.getAbsolutePath())); 
-            Compress(vidFile.getAbsolutePath());
+            Compress(vidFile.getAbsolutePath(), outputkb, codec);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,9 +43,9 @@ public class FileTransportController {
 
     @GetMapping("/download")
     
-    public void Compress(String name) {
+    public void Compress(String name, int size, String codec) {
         try {
-            VideoCompressorService s = new VideoCompressorService(name);
+            VideoCompressorService s = new VideoCompressorService(name, size, codec);
             s.executeJob();
         }
         catch(IOException e) {

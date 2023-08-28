@@ -32,6 +32,6 @@ Currently only converts videos to h.265/HEVC or re-encodes h.264/AVC videos into
 Send a POST request (Powershell example): 
 
     $wc = New-Object System.Net.WebClient
-    $resp = $wc.UploadFile(http://yourHostname:yourHostPort/upload?outputkb=1000&codec=libx265, {file path}.mp4)
+    $wc.UploadFile(http://yourHostname:yourHostPort/upload?outputkb=1000&codec=libx265, {file path}.mp4)
 
 The result is exported to /videos in the current folder or container mount.

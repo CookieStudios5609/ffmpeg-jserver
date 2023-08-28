@@ -9,12 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class FfmpegserverApplicationTests {
 
-	@Autowired
+	//@Autowired
 	//private MockMvc mvc;
 
-	@Test
-	void doTheNeedful() {
-		//how on earth do you test in Spring and why is it so much harder than testing anything else?
-	}
+	// @Test
+	// void doTheNeedful() {
+	// 	//how on earth do you test in Spring and why is it so much harder than testing anything else?
+	// }
 
 }

@@ -36,10 +36,10 @@ public class FileTransportController {
         }
     }
 
-    @GetMapping("/")
-    public String HelloWorld() {
-        return "Hello, World!";
-    }
+    // @GetMapping("/")
+    // public String HelloWorld() {
+    //     return "Hello, World!";
+    // }
 
     @GetMapping("/download")
     

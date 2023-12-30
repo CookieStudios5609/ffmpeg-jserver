@@ -1,0 +1,8 @@
+body {
+    font-family: system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}
+.content {
+    border: 2px gray solid;
+    border-radius: 4%;
+}

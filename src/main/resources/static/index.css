@@ -1,8 +1,31 @@
 body {
-    font-family: system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --color-bg-body: #e8fffa;
+    --color-bg-content: #d9fff7;
+    --color-bg-extra: #8AA6A3;
+    --color-fg-item: #217373;
+
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     text-align: center;
+    color: var(--color-fg-item);
+    background-color: var(--color-bg-body);
+
 }
 .content {
-    border: 2px gray solid;
+    border: 2px var(--color-fg-item) solid;
     border-radius: 4%;
+    background-color: var(--color-bg-content);
+    padding: 10%;
+}
+.extra {
+    color: var(--color-bg-body);
+    background-color: var(--color-bg-extra);
+    width: 80%;
+    margin: auto;
+    border-radius: 15px; /* can your relative units do THIS? */
+    padding: 10%;
+}
+input, option, select {
+    /* Kill off the nasty default styling at some point */
+    background-color: var(--color-bg-body);
+    border-radius: 6px;
 }

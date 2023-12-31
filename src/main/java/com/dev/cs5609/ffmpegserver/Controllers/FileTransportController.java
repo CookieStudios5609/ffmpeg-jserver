@@ -17,7 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @RestController
 public class FileTransportController {
-
+    // TODO: Since it'll be public now, rewrite *all* of this, and account for potential security risks of passing in filenames
+    // Storing files locally immediately isn't going to cut it anymore
+    // use sessions as auth 
     @PostMapping("/upload")
     public void upload(@RequestParam("file") MultipartFile video, RedirectAttributes attributes, @RequestParam(defaultValue = "200000") int outputkb, @RequestParam(defaultValue = "libx264") String codec) {
         System.out.printf("Received file: %s, containing %s bytes of %s\n", video.getOriginalFilename(), video.getSize(), video.getContentType());

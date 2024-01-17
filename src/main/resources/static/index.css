@@ -8,24 +8,44 @@ body {
     text-align: center;
     color: var(--color-fg-item);
     background-color: var(--color-bg-body);
-
 }
 .content {
     border: 2px var(--color-fg-item) solid;
-    border-radius: 4%;
+    border-radius: 12px;
     background-color: var(--color-bg-content);
-    padding: 10%;
+    padding: 3%;
 }
-.extra {
+#extra {
     color: var(--color-bg-body);
     background-color: var(--color-bg-extra);
-    width: 80%;
     margin: auto;
-    border-radius: 15px; /* can your relative units do THIS? */
-    padding: 10%;
+    border-radius: 15px;
+    padding: 2%;
+    overflow: hidden;
+    animation: extraDisplay 1s forwards;
+}
+@keyframes extraDisplay {
+    /* replace with generic show/hide animations */
+    0% {
+        width: 0%;
+        height: 0vh;
+    }
+    50% {
+        width: 95%; /* div is no longer centered.*/
+        height: 0vh;
+    }
+    100% {
+        height: 5vh;
+    }
 }
 input, option, select {
-    /* Kill off the nasty default styling at some point */
+    /* TODO: implement noJS way of trashing the default styling */
     background-color: var(--color-bg-body);
     border-radius: 6px;
+}
+.btn {
+    font-weight: bold;
+}
+.hidden {
+    display: none;
 }

@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
 </head>
 <body>
     <h1>OmniClip</h1>
     <h2>Convert, clip, and compress with ease</h2>
-    <div class="content">
+    <div class="content" onclick="uploadVideo()">
+        <p class="btn" id="videoin">Select a video</p>
+    </div>
+    <div class="content hidden" id="settings">
         <form action="">
-            <label for="vidinput">Select a video file or image sequence:</label>
-            <input type="file" name="vidinput" id="vidinput">
             <div>
-                <input type="radio" name="format" id="h264">
+                <input type="radio" name="format" id="h264" title="Most compatible">
                 <label for="h264">AVC</label>
-                <input type="radio" name="format" id="h265">
-                <label for="h265">HEVC</label>
-                <input type="radio" name="format" id="vp9">
+                <input type="radio" name="format" id="vp9" title="Youtube standard">
                 <label for="vp9">VP9</label>
-                <input type="radio" name="format" id="av1">
+                <input type="radio" name="format" id="h265" title="Smaller size, higher quality">
+                <label for="h265">HEVC</label>
+                <input type="radio" name="format" id="av1" title="Smallest size, highest quality">
                 <label for="av1">AV1</label>
             </div>
-            <p>Advanced Options:</p>
-            <div class="extra">
+            <p class="btn" id="btn_showExtra" onclick="showDivExtra()">Advanced Options</p>
+            <div id="extra" class="hidden">
                 <div>
                     <label for="size">Size: </label>
                     <input type="text" name="size" id="size" placeholder="Unchanged" maxlength="2" size="8">
@@ -36,13 +38,13 @@
                 </div>
                 <div>
                     <label for="dur-start">Duration:</label>
-                    <input type="text" name="dur-start" id="dir-start" size="5">
+                    <input type="text" name="dur-start" id="dur-start" size="5">
                     <label for="dur-end">to</label>
                     <input type="text" name="dur-end" id="dur-end" size="5">
                 </div>
 
             </div>
-            <input type="submit" value="">
+            <input class="btn finish" type="submit" value="Clip!">
         </form>
 
     </div>

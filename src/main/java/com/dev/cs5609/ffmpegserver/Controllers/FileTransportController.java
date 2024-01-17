@@ -17,9 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @RestController
 public class FileTransportController {
-    // TODO: Since it'll be public now, rewrite *all* of this, and account for potential security risks of passing in filenames
-    // Storing files locally immediately isn't going to cut it anymore
-    // use sessions as auth 
+    // TODO: rewrite and account for filename path traversals
     @PostMapping("/upload")
     public void upload(@RequestParam("file") MultipartFile video, RedirectAttributes attributes, @RequestParam(defaultValue = "200000") int outputkb, @RequestParam(defaultValue = "libx264") String codec) {
         System.out.printf("Received file: %s, containing %s bytes of %s\n", video.getOriginalFilename(), video.getSize(), video.getContentType());
@@ -28,7 +26,8 @@ public class FileTransportController {
         try {
             vidFile.createNewFile();
             System.out.println("file created");
-            //TODO: Figure out why Spring attempts to write to a Tomcat folder in the user's temp folder, and fix to use relative paths
+            //FIXME: Spring writes to user's temp folder on windows
+            //use relative paths
             video.transferTo(new File(vidFile.getAbsolutePath())); 
             Compress(vidFile.getAbsolutePath(), outputkb, codec);
         }
